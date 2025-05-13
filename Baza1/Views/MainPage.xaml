@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Baza1.MainPage"
+             Title="Pracownicy UBB">
+
+    <Grid RowDefinitions="*,Auto" Padding="10">
+        <!-- Lista pracowników -->
+        <CollectionView x:Name="pracownicyCollection" Grid.Row="0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" ColumnDefinitions="50,*,*,*">
+                        <Label Text="{Binding Id_pracownika}" Grid.Column="0"/>
+                        <Label Text="{Binding Imie}" Grid.Column="1"/>
+                        <Label Text="{Binding Nazwisko}" Grid.Column="2"/>
+                        <Label Text="{Binding Typ_umowy}" Grid.Column="3"/>
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Tapped="OnPracownikTapped"
+                                NumberOfTapsRequired="1"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Przyciski -->
+        <VerticalStackLayout Grid.Row="1" Spacing="10">
+            <Button Text="Dodaj nowego pracownika" 
+                    Clicked="OnAddPracownikClicked"
+                    BackgroundColor="#512BD4"
+                    TextColor="White"/>
+
+            <Button Text="Dodaj Test" 
+                    Clicked="OnAddTestClicked"
+                    BackgroundColor="#2B0B98"
+                    TextColor="White"/>
+
+            <Button Text="Usuń pracowników" 
+                    Clicked="OnDeletePracownicyClicked"
+                    BackgroundColor="#d42215"
+                    TextColor="White"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
