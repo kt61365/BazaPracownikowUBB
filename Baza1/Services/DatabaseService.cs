@@ -77,5 +77,5 @@ public class DatabaseService
     }
     #endregion
 
-    // Analogiczne metody dla pozostałych tabel...
+    //do rozbudowy
 }

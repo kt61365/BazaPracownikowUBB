@@ -47,7 +47,7 @@ public partial class MainPage : ContentPage
             Pesel = pesel,
             Data_zatrudnienia = DateTime.Now,
             Typ_umowy = typUmowy,
-            Id_stanowiska = 1 // Domyślnie pierwsze stanowisko
+            Id_stanowiska = 1
         };
 
         await _databaseService.AddPracownikAsync(newPracownik);
