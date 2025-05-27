@@ -1,19 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Baza1.MainPage"
-             Title="Pracownicy UBB">
+             x:Class="Baza1.MainPage">
+    <Grid RowDefinitions="Auto,*,Auto" Margin="0" Padding="0">
 
-    <Grid RowDefinitions="*,Auto" Padding="10">
-        <!-- Lista pracowników -->
-        <CollectionView x:Name="pracownicyCollection" Grid.Row="0">
+        <Grid Grid.Row="0" Margin="0" Padding="0" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="ID" Grid.Column="0" Clicked="OnHeaderClicked" CommandParameter="Id_pracownika" Style="{StaticResource HeaderButtonStyle}" />
+            <Button Text="Imię" Grid.Column="1" Clicked="OnHeaderClicked" CommandParameter="Imie" Style="{StaticResource HeaderButtonStyle}" />
+            <Button Text="Nazwisko" Grid.Column="2" Clicked="OnHeaderClicked" CommandParameter="Nazwisko" Style="{StaticResource HeaderButtonStyle}" />
+            <Button Text="Typ Umowy" Grid.Column="3" Clicked="OnHeaderClicked" CommandParameter="Typ_umowy" Style="{StaticResource HeaderButtonStyle}" />
+            <Button Text="PESEL" Grid.Column="4" Clicked="OnHeaderClicked" CommandParameter="Pesel" Style="{StaticResource HeaderButtonStyle}" />
+        </Grid>
+
+        <CollectionView x:Name="pracownicyCollection" Grid.Row="1">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="10" ColumnDefinitions="50,*,*,*">
+                    <Grid Padding="10" ColumnDefinitions="50,*,*,*,*">
                         <Label Text="{Binding Id_pracownika}" Grid.Column="0"/>
                         <Label Text="{Binding Imie}" Grid.Column="1"/>
                         <Label Text="{Binding Nazwisko}" Grid.Column="2"/>
                         <Label Text="{Binding Typ_umowy}" Grid.Column="3"/>
+                        <Label Text="{Binding Pesel}" Grid.Column="4"/>
 
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer 
@@ -25,8 +39,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <!-- Przyciski -->
-        <VerticalStackLayout Grid.Row="1" Spacing="10">
+        <VerticalStackLayout Grid.Row="2" Spacing="10">
             <Button Text="Dodaj nowego pracownika" 
                     Clicked="OnAddPracownikClicked"
                     BackgroundColor="#512BD4"
